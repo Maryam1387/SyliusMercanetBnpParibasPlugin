@@ -29,8 +29,6 @@
         "phpspec/phpspec": "^7.2",
         "behat/behat": "^3.6.1",
         "behat/mink-selenium2-driver": "^1.4",
-        "behat/mink": "^1.7",
-        "behat/mink-browserkit-driver": "^1.3",
         "friends-of-behat/mink": "^1.8",
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-debug-extension": "^2.0.0",
