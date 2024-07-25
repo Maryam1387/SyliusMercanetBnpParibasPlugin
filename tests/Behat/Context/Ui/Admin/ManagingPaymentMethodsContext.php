@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -14,19 +16,11 @@ use Behat\Behat\Context\Context;
 use Tests\BitBag\MercanetBnpParibasPlugin\Behat\Page\Admin\PaymentMethod\CreatePageInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class ManagingPaymentMethodsContext implements Context
 {
-    /**
-     * @var CreatePageInterface
-     */
+    /** @var CreatePageInterface */
     private $createPage;
 
-    /**
-     * @param CreatePageInterface $createPage
-     */
     public function __construct(CreatePageInterface $createPage)
     {
         $this->createPage = $createPage;

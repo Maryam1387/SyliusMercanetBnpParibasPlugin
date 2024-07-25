@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -11,16 +13,12 @@
 namespace BitBag\MercanetBnpParibasPlugin\Bridge;
 
 use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
+use BitBag\MercanetBnpParibasPlugin\Legacy\ShaComposer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use BitBag\MercanetBnpParibasPlugin\Legacy\ShaComposer;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class MercanetBnpParibasBridge implements MercanetBnpParibasBridgeInterface
 {
-
     private RequestStack $requestStack;
 
     /** @phpstan-ignore-next-line We should not change our business logic now*/
@@ -48,7 +46,6 @@ final class MercanetBnpParibasBridge implements MercanetBnpParibasBridgeInterfac
     public function paymentVerification(): bool
     {
         if ($this->isPostMethod()) {
-
             $this->mercanet = new Mercanet($this->secretKey);
             $this->mercanet->setResponse($_POST);
 

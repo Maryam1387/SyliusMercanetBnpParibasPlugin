@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -16,15 +18,12 @@ use Payum\Core\ApiAwareInterface;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Exception\UnsupportedApiException;
 use Payum\Core\GatewayAwareTrait;
-use Sylius\Component\Core\Model\PaymentInterface;
 use Payum\Core\Request\Notify;
+use SM\Factory\FactoryInterface;
+use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Payment\PaymentTransitions;
 use Webmozart\Assert\Assert;
-use SM\Factory\FactoryInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class NotifyAction implements ActionInterface, ApiAwareInterface
 {
     use GatewayAwareTrait;
@@ -38,13 +37,14 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface
         $this->stateMachineFactory = $stateMachineFactory;
     }
 
+    /**
+     * @param $request Notify
+     */
     public function execute($request): void
     {
-        /** @var $request Notify */
         RequestNotSupportedException::assertSupports($this, $request);
 
         if ($this->mercanetBnpParibasBridge->paymentVerification()) {
-
             /** @var PaymentInterface $payment */
             $payment = $request->getFirstModel();
 

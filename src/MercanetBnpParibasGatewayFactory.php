@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -15,13 +17,10 @@ use BitBag\MercanetBnpParibasPlugin\Bridge\MercanetBnpParibasBridgeInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\GatewayFactory;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class MercanetBnpParibasGatewayFactory extends GatewayFactory
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     protected function populateConfig(ArrayObject $config): void
     {

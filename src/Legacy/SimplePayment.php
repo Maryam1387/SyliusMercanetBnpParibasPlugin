@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -12,13 +14,8 @@ namespace BitBag\MercanetBnpParibasPlugin\Legacy;
 
 use Payum\Core\Reply\HttpResponse;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class SimplePayment
 {
-
     private Mercanet $mercanet;
 
     private string $environment;
@@ -46,9 +43,8 @@ final class SimplePayment
         string $targetUrl,
         string $currency,
         string $transactionReference,
-        string $automaticResponseUrl
-    )
-    {
+        string $automaticResponseUrl,
+    ) {
         $this->automaticResponseUrl = $automaticResponseUrl;
         $this->transactionReference = $transactionReference;
         $this->mercanet = $mercanet;
@@ -69,7 +65,7 @@ final class SimplePayment
         $this->mercanet->setKeyVersion($this->keyVersion);
         $this->mercanet->setAmount($this->amount);
         $this->mercanet->setCurrency($this->currency);
-        $this->mercanet->setOrderChannel("INTERNET");
+        $this->mercanet->setOrderChannel('INTERNET');
         $this->mercanet->setTransactionReference($this->transactionReference);
         $this->mercanet->setNormalReturnUrl($this->targetUrl);
         $this->mercanet->setAutomaticResponseUrl($this->automaticResponseUrl);
@@ -106,8 +102,12 @@ final class SimplePayment
         }
 
         throw new \InvalidArgumentException(
-            sprintf('The "%s" environment is invalid. Expected %s or %s',
-                $this->environment, Mercanet::PRODUCTION, Mercanet::TEST)
+            sprintf(
+                'The "%s" environment is invalid. Expected %s or %s',
+                $this->environment,
+                Mercanet::PRODUCTION,
+                Mercanet::TEST,
+            ),
         );
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -15,21 +17,11 @@ use Payum\Core\Security\TokenInterface;
 use Sylius\Behat\Page\Page;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class MercanetBnpParibasCheckoutPage extends Page implements MercanetBnpParibasCheckoutPageInterface
 {
-    /**
-     * @var RepositoryInterface
-     */
+    /** @var RepositoryInterface */
     private $securityTokenRepository;
 
-    /**
-     * @param Session $session
-     * @param array $parameters
-     * @param RepositoryInterface $securityTokenRepository
-     */
     public function __construct(Session $session, array $parameters, RepositoryInterface $securityTokenRepository)
     {
         parent::__construct($session, $parameters);
@@ -38,7 +30,7 @@ final class MercanetBnpParibasCheckoutPage extends Page implements MercanetBnpPa
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function pay()
     {
@@ -46,7 +38,7 @@ final class MercanetBnpParibasCheckoutPage extends Page implements MercanetBnpPa
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function cancel()
     {
@@ -54,8 +46,6 @@ final class MercanetBnpParibasCheckoutPage extends Page implements MercanetBnpPa
     }
 
     /**
-     * @param array $urlParameters
-     *
      * @return string
      */
     protected function getUrl(array $urlParameters = [])

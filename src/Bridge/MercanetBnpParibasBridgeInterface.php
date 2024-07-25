@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -13,9 +15,6 @@ namespace BitBag\MercanetBnpParibasPlugin\Bridge;
 use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
 use BitBag\MercanetBnpParibasPlugin\Legacy\ShaComposer;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 interface MercanetBnpParibasBridgeInterface
 {
     /** @phpstan-ignore-next-line We should not change our business logic now*/

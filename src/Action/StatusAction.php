@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -11,32 +13,24 @@
 namespace BitBag\MercanetBnpParibasPlugin\Action;
 
 use Payum\Core\Action\ActionInterface;
-use Payum\Core\Request\GetStatusInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\RequestNotSupportedException;
+use Payum\Core\Request\GetStatusInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class StatusAction implements ActionInterface
 {
-
     private RequestStack $requestStack;
 
-    /**
-     * @param RequestStack $requestStack
-     */
     public function __construct(RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @param GetStatusInterface $request
      */
@@ -49,25 +43,22 @@ final class StatusAction implements ActionInterface
         /** @var Request $requestCurrent */
         $requestCurrent = $this->requestStack->getCurrentRequest();
 
-        $transactionReference = isset($model['transactionReference']) ? $model['transactionReference'] : null;
+        $transactionReference = $model['transactionReference'] ?? null;
 
-        $status = isset($model['status']) ? $model['status'] : null;
+        $status = $model['status'] ?? null;
 
         if ((null === $transactionReference) && !$requestCurrent->isMethod('POST')) {
-
             $request->markNew();
 
             return;
         }
 
         if ($status === PaymentInterface::STATE_CANCELLED) {
-
             $request->markCanceled();
 
             return;
         }
         if ($status === PaymentInterface::STATE_COMPLETED) {
-
             $request->markCaptured();
 
             return;
@@ -77,7 +68,7 @@ final class StatusAction implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function supports($request)
     {

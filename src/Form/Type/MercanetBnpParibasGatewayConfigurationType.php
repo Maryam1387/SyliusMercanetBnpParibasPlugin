@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -19,13 +21,10 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class MercanetBnpParibasGatewayConfigurationType extends AbstractType
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -43,8 +42,8 @@ final class MercanetBnpParibasGatewayConfigurationType extends AbstractType
                 'constraints' => [
                     new NotBlank([
                         'message' => 'bitbag.mercanet_bnp_paribas.secure_key.not_blank',
-                        'groups' => ['sylius']
-                    ])
+                        'groups' => ['sylius'],
+                    ]),
                 ],
             ])
             ->add('merchant_id', TextType::class, [
@@ -52,8 +51,8 @@ final class MercanetBnpParibasGatewayConfigurationType extends AbstractType
                 'constraints' => [
                     new NotBlank([
                         'message' => 'bitbag.mercanet_bnp_paribas.merchant_id.not_blank',
-                        'groups' => ['sylius']
-                    ])
+                        'groups' => ['sylius'],
+                    ]),
                 ],
             ])
             ->add('key_version', TextType::class, [
@@ -61,8 +60,8 @@ final class MercanetBnpParibasGatewayConfigurationType extends AbstractType
                 'constraints' => [
                     new NotBlank([
                         'message' => 'bitbag.mercanet_bnp_paribas.key_version.not_blank',
-                        'groups' => ['sylius']
-                    ])
+                        'groups' => ['sylius'],
+                    ]),
                 ],
             ])
             ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {

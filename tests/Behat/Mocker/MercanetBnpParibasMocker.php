@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -10,31 +12,20 @@
 
 namespace Tests\BitBag\MercanetBnpParibasPlugin\Behat\Mocker;
 
-use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
 use BitBag\MercanetBnpParibasPlugin\Bridge\MercanetBnpParibasBridgeInterface;
+use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
 use Sylius\Behat\Service\Mocker\Mocker;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class MercanetBnpParibasMocker
 {
-    /**
-     * @var Mocker
-     */
+    /** @var Mocker */
     private $mocker;
 
-    /**
-     * @param Mocker $mocker
-     */
     public function __construct(Mocker $mocker)
     {
         $this->mocker = $mocker;
     }
 
-    /**
-     * @param callable $action
-     */
     public function completedPayment(callable $action)
     {
         $openMercanetBnpParibasWrapper = $this->mocker
@@ -81,9 +72,6 @@ final class MercanetBnpParibasMocker
         $this->mocker->unmockAll();
     }
 
-    /**
-     * @param callable $action
-     */
     public function canceledPayment(callable $action)
     {
         $openMercanetBnpParibasWrapper = $this->mocker
