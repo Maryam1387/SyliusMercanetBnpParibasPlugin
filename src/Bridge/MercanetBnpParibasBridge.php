@@ -11,61 +11,41 @@
 namespace BitBag\MercanetBnpParibasPlugin\Bridge;
 
 use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use BitBag\MercanetBnpParibasPlugin\Legacy\ShaComposer;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 final class MercanetBnpParibasBridge implements MercanetBnpParibasBridgeInterface
 {
-    /**
-     * @var RequestStack
-     */
-    private $requestStack;
 
-    /**
-     * @var string
-     */
-    private $secretKey;
+    private RequestStack $requestStack;
 
-    /**
-     * @var string
-     */
-    private $merchantId;
+    /** @phpstan-ignore-next-line We should not change our business logic now*/
+    private ShaComposer $secretKey;
 
-    /**
-     * @var string
-     */
-    private $keyVersion;
+    private string $merchantId;
 
-    /**
-     * @var string
-     */
-    private $environment;
+    private string $keyVersion;
 
-    /** @var Mercanet */
-    private $mercanet;
+    private string $environment;
 
-    /**
-     * @param RequestStack $requestStack
-     */
+    private Mercanet $mercanet;
+
     public function __construct(RequestStack $requestStack)
     {
         $this->requestStack = $requestStack;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function createMercanet($secretKey)
+    /** @phpstan-ignore-next-line We should not change our business logic now*/
+    public function createMercanet(ShaComposer $secretKey): Mercanet
     {
         return new Mercanet($secretKey);
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function paymentVerification()
+    public function paymentVerification(): bool
     {
         if ($this->isPostMethod()) {
 
@@ -78,81 +58,58 @@ final class MercanetBnpParibasBridge implements MercanetBnpParibasBridgeInterfac
         return false;
     }
 
-    public function getAuthorisationId()
+    public function getAuthorisationId(): string
     {
+        /** @phpstan-ignore-next-line This method does not exist, but we should not change that now*/
         return $this->mercanet->getAuthorisationId();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function isPostMethod()
+    public function isPostMethod(): bool
     {
+        /** @var Request $currentRequest */
         $currentRequest = $this->requestStack->getCurrentRequest();
 
         return $currentRequest->isMethod('POST');
     }
 
-    /**
-     * @return string
-     */
-    public function getSecretKey()
+    /** @phpstan-ignore-next-line We should not change our business logic now*/
+    public function getSecretKey(): ShaComposer
     {
         return $this->secretKey;
     }
 
-    /**
-     * @param string $secretKey
-     */
-    public function setSecretKey($secretKey)
+    /** @phpstan-ignore-next-line We should not change our business logic now*/
+    public function setSecretKey(ShaComposer $secretKey): void
     {
         $this->secretKey = $secretKey;
     }
 
-    /**
-     * @return string
-     */
-    public function getMerchantId()
+    public function getMerchantId(): string
     {
         return $this->merchantId;
     }
 
-    /**
-     * @param string $merchantId
-     */
-    public function setMerchantId($merchantId)
+    public function setMerchantId(string $merchantId): void
     {
         $this->merchantId = $merchantId;
     }
 
-    /**
-     * @return string
-     */
-    public function getKeyVersion()
+    public function getKeyVersion(): string
     {
         return $this->keyVersion;
     }
 
-    /**
-     * @param string $keyVersion
-     */
-    public function setKeyVersion($keyVersion)
+    public function setKeyVersion(string $keyVersion): void
     {
         $this->keyVersion = $keyVersion;
     }
 
-    /**
-     * @return string
-     */
-    public function getEnvironment()
+    public function getEnvironment(): string
     {
         return $this->environment;
     }
 
-    /**
-     * @param string $environment
-     */
-    public function setEnvironment($environment)
+    public function setEnvironment(string $environment): void
     {
         $this->environment = $environment;
     }

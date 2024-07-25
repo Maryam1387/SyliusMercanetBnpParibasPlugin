@@ -15,6 +15,7 @@ use Payum\Core\Request\GetStatusInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Sylius\Component\Core\Model\PaymentInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -23,10 +24,8 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 final class StatusAction implements ActionInterface
 {
-    /**
-     * @var RequestStack
-     */
-    private $requestStack;
+
+    private RequestStack $requestStack;
 
     /**
      * @param RequestStack $requestStack
@@ -41,12 +40,13 @@ final class StatusAction implements ActionInterface
      *
      * @param GetStatusInterface $request
      */
-    public function execute($request)
+    public function execute($request): void
     {
         RequestNotSupportedException::assertSupports($this, $request);
 
         $model = ArrayObject::ensureArrayObject($request->getModel());
 
+        /** @var Request $requestCurrent */
         $requestCurrent = $this->requestStack->getCurrentRequest();
 
         $transactionReference = isset($model['transactionReference']) ? $model['transactionReference'] : null;

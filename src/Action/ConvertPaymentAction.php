@@ -30,16 +30,13 @@ final class ConvertPaymentAction implements ActionInterface, GatewayAwareInterfa
      *
      * @param Convert $request
      */
-    public function execute($request)
+    public function execute($request): void
     {
         RequestNotSupportedException::assertSupports($this, $request);
 
         $request->setResult([]);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function supports($request)
     {
         return
@@ -49,10 +46,7 @@ final class ConvertPaymentAction implements ActionInterface, GatewayAwareInterfa
         ;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getClientIp()
+    public function getClientIp(): ?string
     {
         return array_key_exists('REMOTE_ADDR', $_SERVER) ? $_SERVER['REMOTE_ADDR'] : null;
     }

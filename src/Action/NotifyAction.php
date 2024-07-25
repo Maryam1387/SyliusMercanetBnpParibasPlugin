@@ -29,28 +29,16 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface
 {
     use GatewayAwareTrait;
 
-    /**
-     * @var MercanetBnpParibasBridgeInterface
-     */
-    private $mercanetBnpParibasBridge;
+    private MercanetBnpParibasBridgeInterface $mercanetBnpParibasBridge;
 
-    /**
-     * @var FactoryInterface
-     */
-    private $stateMachineFactory;
+    private FactoryInterface $stateMachineFactory;
 
-    /**
-     * @param FactoryInterface $stateMachineFactory
-     */
     public function __construct(FactoryInterface $stateMachineFactory)
     {
         $this->stateMachineFactory = $stateMachineFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function execute($request)
+    public function execute($request): void
     {
         /** @var $request Notify */
         RequestNotSupportedException::assertSupports($this, $request);
@@ -68,10 +56,7 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function setApi($mercanetBnpParibasBridge)
+    public function setApi($mercanetBnpParibasBridge): void
     {
         if (!$mercanetBnpParibasBridge instanceof MercanetBnpParibasBridgeInterface) {
             throw new UnsupportedApiException('Not supported.');
@@ -80,9 +65,6 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface
         $this->mercanetBnpParibasBridge = $mercanetBnpParibasBridge;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function supports($request)
     {
         return

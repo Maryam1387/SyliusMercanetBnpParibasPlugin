@@ -18,67 +18,35 @@ use Payum\Core\Reply\HttpResponse;
  */
 final class SimplePayment
 {
-    /**
-     * @var Mercanet|object
-     */
-    private $mercanet;
 
-    /**
-     * @var string
-     */
-    private $environment;
+    private Mercanet $mercanet;
 
-    /**
-     * @var string
-     */
-    private $merchantId;
+    private string $environment;
 
-    /**
-     * @var string
-     */
-    private $keyVersion;
+    private string $merchantId;
 
-    /**
-     * @var string
-     */
-    private $amount;
+    private string $keyVersion;
 
-    /**
-     * @var string
-     */
-    private $currency;
+    private int $amount;
 
-    /**
-     * @var string
-     */
-    private $transactionReference;
+    private string $currency;
 
-    /**
-     * @var string
-     */
-    private $automaticResponseUrl;
+    private string $transactionReference;
 
-    /**
-     * @param Mercanet $mercanet
-     * @param $merchantId
-     * @param $keyVersion
-     * @param $environment
-     * @param $amount
-     * @param $targetUrl
-     * @param $currency
-     * @param $transactionReference
-     * @param $automaticResponseUrl
-     */
+    private string $automaticResponseUrl;
+
+    private string $targetUrl;
+
     public function __construct(
         Mercanet $mercanet,
-        $merchantId,
-        $keyVersion,
-        $environment,
-        $amount,
-        $targetUrl,
-        $currency,
-        $transactionReference,
-        $automaticResponseUrl
+        string $merchantId,
+        string $keyVersion,
+        string $environment,
+        int $amount,
+        string $targetUrl,
+        string $currency,
+        string $transactionReference,
+        string $automaticResponseUrl
     )
     {
         $this->automaticResponseUrl = $automaticResponseUrl;
@@ -92,7 +60,7 @@ final class SimplePayment
         $this->targetUrl = $targetUrl;
     }
 
-    public function execute()
+    public function execute(): void
     {
         $this->resolveEnvironment();
 
@@ -108,6 +76,7 @@ final class SimplePayment
 
         $this->mercanet->validate();
 
+        /** @var string $response */
         $response = $this->mercanet->executeRequest();
 
         throw new HttpResponse($response);
@@ -116,7 +85,7 @@ final class SimplePayment
     /**
      * @throws \InvalidArgumentException
      */
-    private function resolveEnvironment()
+    private function resolveEnvironment(): void
     {
         if (Mercanet::TEST === $this->environment) {
             $this->mercanet->setUrl(Mercanet::TEST);

@@ -11,68 +11,37 @@
 namespace BitBag\MercanetBnpParibasPlugin\Bridge;
 
 use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
+use BitBag\MercanetBnpParibasPlugin\Legacy\ShaComposer;
 
 /**
  * @author Patryk Drapik <patryk.drapik@bitbag.pl>
  */
 interface MercanetBnpParibasBridgeInterface
 {
-    /**
-     * @param string $secretKey
-     *
-     * @return Mercanet
-     */
-    public function createMercanet($secretKey);
+    /** @phpstan-ignore-next-line We should not change our business logic now*/
+    public function createMercanet(ShaComposer $secretKey): Mercanet;
 
-    /**
-     * @return bool
-     */
-    public function paymentVerification();
+    public function paymentVerification(): bool;
 
-    public function getAuthorisationId();
+    public function getAuthorisationId(): string;
 
-    /**
-     * @return bool
-     */
-    public function isPostMethod();
+    public function isPostMethod(): bool;
 
-    /**
-     * @return string
-     */
-    public function getSecretKey();
+    /** @phpstan-ignore-next-line We should not change our business logic now*/
+    public function getSecretKey(): ShaComposer;
 
-    /**
-     * @param string $secretKey
-     */
-    public function setSecretKey($secretKey);
+    /** @phpstan-ignore-next-line We should not change our business logic now*/
+    public function setSecretKey(ShaComposer $secretKey): void;
 
-    /**
-     * @return string
-     */
-    public function getMerchantId();
+    public function getMerchantId(): string;
 
-    /**
-     * @param string $merchantId
-     */
-    public function setMerchantId($merchantId);
+    public function setMerchantId(string $merchantId): void;
 
-    /**
-     * @return string
-     */
-    public function getKeyVersion();
+    public function getKeyVersion(): string;
 
-    /**
-     * @param string $keyVersion
-     */
-    public function setKeyVersion($keyVersion);
+    public function setKeyVersion(string $keyVersion): void;
 
-    /**
-     * @return string
-     */
-    public function getEnvironment();
+    public function getEnvironment(): string;
 
-    /**
-     * @param string $environment
-     */
-    public function setEnvironment($environment);
+    public function setEnvironment(string $environment): void;
 }
