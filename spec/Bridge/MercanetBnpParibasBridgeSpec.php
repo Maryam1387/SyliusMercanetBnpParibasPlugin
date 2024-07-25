@@ -67,7 +67,7 @@ final class MercanetBnpParibasBridgeSpec extends ObjectBehavior
     {
         $request->isMethod('POST')->willReturn(true);
         $requestStack->getCurrentRequest()->willReturn($request);
-
+        $this->setSecretKey('123');
         $this
             ->shouldThrow(\InvalidArgumentException::class)
             ->during('paymentVerification', ['key'])

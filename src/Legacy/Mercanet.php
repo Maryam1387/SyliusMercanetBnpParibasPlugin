@@ -52,7 +52,7 @@ class Mercanet
     ];
 
     /** @phpstan-ignore-next-line We should not change our business logic now*/
-    private ShaComposer $secretKey;
+    private string $secretKey;
 
     private string $pspURL = self::TEST;
 
@@ -123,7 +123,7 @@ class Mercanet
     }
 
     /** @phpstan-ignore-next-line We should not change our business logic now*/
-    public function __construct(ShaComposer $secret)
+    public function __construct(string $secret)
     {
         $this->secretKey = $secret;
     }
@@ -530,7 +530,7 @@ class Mercanet
     }
 
     /** @phpstan-ignore-next-line We should not change our business logic now*/
-    public static function createFromArray(ShaComposer $shaComposer, array $parameters): PaymentRequest|static
+    public static function createFromArray(string $shaComposer, array $parameters): PaymentRequest|static
     {
         /** @phpstan-ignore-next-line Unsafe usage of new static() */
         $instance = new static($shaComposer);

@@ -13,12 +13,11 @@ declare(strict_types=1);
 namespace BitBag\MercanetBnpParibasPlugin\Bridge;
 
 use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
-use BitBag\MercanetBnpParibasPlugin\Legacy\ShaComposer;
 
 interface MercanetBnpParibasBridgeInterface
 {
     /** @phpstan-ignore-next-line We should not change our business logic now*/
-    public function createMercanet(ShaComposer $secretKey): Mercanet;
+    public function createMercanet(string $secretKey): Mercanet;
 
     public function paymentVerification(): bool;
 
@@ -26,11 +25,9 @@ interface MercanetBnpParibasBridgeInterface
 
     public function isPostMethod(): bool;
 
-    /** @phpstan-ignore-next-line We should not change our business logic now*/
-    public function getSecretKey(): ShaComposer;
+    public function getSecretKey(): string;
 
-    /** @phpstan-ignore-next-line We should not change our business logic now*/
-    public function setSecretKey(ShaComposer $secretKey): void;
+    public function setSecretKey(string $secretKey): void;
 
     public function getMerchantId(): string;
 

@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace BitBag\MercanetBnpParibasPlugin\Bridge;
 
 use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
-use BitBag\MercanetBnpParibasPlugin\Legacy\ShaComposer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -21,8 +20,7 @@ final class MercanetBnpParibasBridge implements MercanetBnpParibasBridgeInterfac
 {
     private RequestStack $requestStack;
 
-    /** @phpstan-ignore-next-line We should not change our business logic now*/
-    private ShaComposer $secretKey;
+    private string $secretKey;
 
     private string $merchantId;
 
@@ -38,7 +36,7 @@ final class MercanetBnpParibasBridge implements MercanetBnpParibasBridgeInterfac
     }
 
     /** @phpstan-ignore-next-line We should not change our business logic now*/
-    public function createMercanet(ShaComposer $secretKey): Mercanet
+    public function createMercanet(string $secretKey): Mercanet
     {
         return new Mercanet($secretKey);
     }
@@ -70,13 +68,13 @@ final class MercanetBnpParibasBridge implements MercanetBnpParibasBridgeInterfac
     }
 
     /** @phpstan-ignore-next-line We should not change our business logic now*/
-    public function getSecretKey(): ShaComposer
+    public function getSecretKey(): string
     {
         return $this->secretKey;
     }
 
     /** @phpstan-ignore-next-line We should not change our business logic now*/
-    public function setSecretKey(ShaComposer $secretKey): void
+    public function setSecretKey(string $secretKey): void
     {
         $this->secretKey = $secretKey;
     }
