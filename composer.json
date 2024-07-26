@@ -56,11 +56,13 @@
     },
     "autoload": {
         "psr-4": {
-            "BitBag\\MercanetBnpParibasPlugin\\": "src/",
-            "Tests\\BitBag\\MercanetBnpParibasPlugin\\": "tests/"
+            "BitBag\\MercanetBnpParibasPlugin\\": "src/"
         }
     },
     "autoload-dev": {
+        "psr-4": {
+            "Tests\\BitBag\\MercanetBnpParibasPlugin\\": "tests/"
+        },
         "classmap": [
             "tests/Application/Kernel.php"
         ]
