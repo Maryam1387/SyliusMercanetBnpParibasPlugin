@@ -39,10 +39,10 @@ This **open-source plugin was developed to help the Sylius community** and make 
 
 We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.
 
-| Package | Version |
-| --- | --- |
-| PHP | ^7.1 |
-| Sylius | 1.0 |
+| Package | Version | Version |
+| --- |-------|-------|
+| PHP | ^8.0  | ^8.1  |
+| Sylius | ^1.12 | ^1.13 |
 
 ----
 
