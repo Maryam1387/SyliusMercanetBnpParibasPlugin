@@ -19,6 +19,7 @@
         "symfony/webpack-encore-bundle": "^1.16"
     },
     "require-dev": {
+        "doctrine/annotations": "^1.13",
         "bitbag/coding-standard": "^3.0",
         "phpstan/extension-installer": "^1.0",
         "phpstan/phpstan": "^1.8.1",

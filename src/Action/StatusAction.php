@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
 declare(strict_types=1);
 
 /**
@@ -53,12 +60,12 @@ final class StatusAction implements ActionInterface
             return;
         }
 
-        if ($status === PaymentInterface::STATE_CANCELLED) {
+        if (PaymentInterface::STATE_CANCELLED === $status) {
             $request->markCanceled();
 
             return;
         }
-        if ($status === PaymentInterface::STATE_COMPLETED) {
+        if (PaymentInterface::STATE_COMPLETED === $status) {
             $request->markCaptured();
 
             return;

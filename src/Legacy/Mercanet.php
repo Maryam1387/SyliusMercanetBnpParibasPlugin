@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
 declare(strict_types=1);
 
 /**
@@ -133,7 +140,7 @@ class Mercanet
         // compose SHA string
         $shaString = '';
         foreach ($parameters as $key => $value) {
-            if ($key != 'keyVersion') {
+            if ('keyVersion' != $key) {
                 if (is_array($value)) {
                     /** @phpstan-ignore-next-line We should not change our business logic now*/
                     shaCompose($value);
@@ -193,7 +200,7 @@ class Mercanet
         if (!is_int($amount)) {
             throw new \InvalidArgumentException('Integer expected. Amount is always in cents');
         }
-        if ($amount <= 0) {
+        if (0 >= $amount) {
             throw new \InvalidArgumentException('Amount must be a positive number');
         }
         $this->parameters['amount'] = $amount;
@@ -241,7 +248,7 @@ class Mercanet
 
     public function setBillingContactEmail(string $email): void
     {
-        if (strlen($email) > 50) {
+        if (50 < strlen($email)) {
             throw new \InvalidArgumentException('Email is too long');
         }
         if (!filter_var($email, \FILTER_VALIDATE_EMAIL)) {
@@ -252,7 +259,7 @@ class Mercanet
 
     public function setBillingAddressStreet(string $street): void
     {
-        if (strlen($street) > 35) {
+        if (35 < strlen($street)) {
             throw new \InvalidArgumentException('street is too long');
         }
         $this->parameters['billingAddress.street'] = \Normalizer::normalize($street);
@@ -260,7 +267,7 @@ class Mercanet
 
     public function setBillingAddressStreetNumber(string $nr): void
     {
-        if (strlen($nr) > 10) {
+        if (10 < strlen($nr)) {
             throw new \InvalidArgumentException('streetNumber is too long');
         }
         $this->parameters['billingAddress.streetNumber'] = \Normalizer::normalize($nr);
@@ -268,7 +275,7 @@ class Mercanet
 
     public function setBillingAddressZipCode(string $zipCode): void
     {
-        if (strlen($zipCode) > 10) {
+        if (10 < strlen($zipCode)) {
             throw new \InvalidArgumentException('zipCode is too long');
         }
         $this->parameters['billingAddress.zipCode'] = \Normalizer::normalize($zipCode);
@@ -276,7 +283,7 @@ class Mercanet
 
     public function setBillingAddressCity(string $city): void
     {
-        if (strlen($city) > 25) {
+        if (25 < strlen($city)) {
             throw new \InvalidArgumentException('city is too long');
         }
         $this->parameters['billingAddress.city'] = \Normalizer::normalize($city);
@@ -284,7 +291,7 @@ class Mercanet
 
     public function setBillingContactPhone(string $phone): void
     {
-        if (strlen($phone) > 30) {
+        if (30 < strlen($phone)) {
             throw new \InvalidArgumentException('phone is too long');
         }
         $this->parameters['billingContact.phone'] = $phone;
@@ -302,7 +309,7 @@ class Mercanet
 
     public function setCaptureDay(string $number): void
     {
-        if (strlen($number) > 2) {
+        if (2 < strlen($number)) {
             throw new \InvalidArgumentException('captureDay is too long');
         }
         $this->parameters['captureDay'] = $number;
@@ -310,7 +317,7 @@ class Mercanet
 
     public function setCaptureMode(string $value): void
     {
-        if (strlen($value) > 20) {
+        if (20 < strlen($value)) {
             throw new \InvalidArgumentException('captureMode is too long');
         }
         $this->parameters['captureMode'] = $value;
@@ -318,7 +325,7 @@ class Mercanet
 
     public function setMerchantTransactionDateTime(string $value): void
     {
-        if (strlen($value) > 25) {
+        if (25 < strlen($value)) {
             throw new \InvalidArgumentException('merchantTransactionDateTime is too long');
         }
         $this->parameters['merchantTransactionDateTime'] = $value;
@@ -336,7 +343,7 @@ class Mercanet
 
     public function setOrderChannel(string $value): void
     {
-        if (strlen($value) > 20) {
+        if (20 < strlen($value)) {
             throw new \InvalidArgumentException('orderChannel is too long');
         }
         $this->parameters['orderChannel'] = $value;
@@ -344,7 +351,7 @@ class Mercanet
 
     public function setOrderId(string $value): void
     {
-        if (strlen($value) > 32) {
+        if (32 < strlen($value)) {
             throw new \InvalidArgumentException('orderId is too long');
         }
         $this->parameters['orderId'] = $value;
@@ -352,7 +359,7 @@ class Mercanet
 
     public function setReturnContext(string $value): void
     {
-        if (strlen($value) > 255) {
+        if (255 < strlen($value)) {
             throw new \InvalidArgumentException('returnContext is too long');
         }
         $this->parameters['returnContext'] = $value;
@@ -360,7 +367,7 @@ class Mercanet
 
     public function setTransactionOrigin(string $value): void
     {
-        if (strlen($value) > 20) {
+        if (20 < strlen($value)) {
             throw new \InvalidArgumentException('transactionOrigin is too long');
         }
         $this->parameters['transactionOrigin'] = $value;
@@ -368,10 +375,10 @@ class Mercanet
 
     public function setCardNumber(string $number): void
     {
-        if (strlen($number) > 19) {
+        if (19 < strlen($number)) {
             throw new \InvalidArgumentException('cardNumber is too long');
         }
-        if (strlen($number) < 12) {
+        if (12 > strlen($number)) {
             throw new \InvalidArgumentException('cardNumber is too short');
         }
         $this->parameters['cardNumber'] = $number;
@@ -379,7 +386,7 @@ class Mercanet
 
     public function setCardExpiryDate(string $date): void
     {
-        if (strlen($date) != 6) {
+        if (6 != strlen($date)) {
             throw new \InvalidArgumentException('cardExpiryDate value is invalid');
         }
         $this->parameters['cardExpiryDate'] = $date;
@@ -387,7 +394,7 @@ class Mercanet
 
     public function setCardCSCValue(string $value): void
     {
-        if (strlen($value) > 4) {
+        if (4 < strlen($value)) {
             throw new \InvalidArgumentException('cardCSCValue value is invalid');
         }
         $this->parameters['cardCSCValue'] = $value;
@@ -395,7 +402,7 @@ class Mercanet
 
     public function setFraudDataBypass3DS(string $value): void
     {
-        if (strlen($value) > 128) {
+        if (128 < strlen($value)) {
             throw new \InvalidArgumentException('fraudData.bypass3DS is too long');
         }
         $this->parameters['fraudData.bypass3DS'] = $value;
@@ -403,7 +410,7 @@ class Mercanet
 
     public function setMerchantWalletId(string $wallet): void
     {
-        if (strlen($wallet) > 21) {
+        if (21 < strlen($wallet)) {
             throw new \InvalidArgumentException('merchantWalletId is too long');
         }
         $this->parameters['merchantWalletId'] = $wallet;
@@ -411,7 +418,7 @@ class Mercanet
 
     public function setPaymentMeanId(string $value): void
     {
-        if (strlen($value) > 6) {
+        if (6 < strlen($value)) {
             throw new \InvalidArgumentException('paymentMeanId is too long');
         }
         $this->parameters['paymentMeanId'] = $value;
@@ -419,10 +426,10 @@ class Mercanet
 
     public function setInstalmentDataNumber(string $number): void
     {
-        if (strlen($number) > 2) {
+        if (2 < strlen($number)) {
             throw new \InvalidArgumentException('instalmentData.number is too long');
         }
-        if (($number < 2) || ($number > 50)) {
+        if ((2 > $number) || (50 < $number)) {
             throw new \InvalidArgumentException('instalmentData.number invalid value : value must be set between 2 and 50');
         }
         $this->parameters['instalmentData.number'] = $number;
@@ -450,7 +457,7 @@ class Mercanet
 
     public function __call(string $method, array $args): ?string
     {
-        if (substr($method, 0, 3) == 'set') {
+        if ('set' == substr($method, 0, 3)) {
             $field = lcfirst(substr($method, 3));
             if (in_array($field, $this->pspFields)) {
                 $this->parameters[$field] = $args[0];
@@ -459,7 +466,7 @@ class Mercanet
             }
         }
 
-        if (substr($method, 0, 3) == 'get') {
+        if ('get' == substr($method, 0, 3)) {
             $field = lcfirst(substr($method, 3));
             if (array_key_exists($field, $this->parameters)) {
                 return $this->parameters[$field];
@@ -485,12 +492,12 @@ class Mercanet
         $chaine = '{';
         foreach ($this->parameters as $key => $val) {
             $dataArray = explode('.', $key);
-            if (count($dataArray) > 1) {
+            if (1 < count($dataArray)) {
                 if ($dataName == $dataArray[0]) {
                     $parameterArray[$dataArray[1]] = $val;
                 } else {
-                    if ($dataName != '') {
-                        if (strlen($chaine) != 1) {
+                    if ('' != $dataName) {
+                        if (1 != strlen($chaine)) {
                             $chaine .= ',';
                         }
                         $chaine .= '"' . $dataName . '":' . json_encode($parameterArray);
@@ -501,21 +508,21 @@ class Mercanet
                     $parameterArray[$dataArray[1]] = $val;
                 }
             } else {
-                if ($dataName != '') {
-                    if (strlen($chaine) != 1) {
+                if ('' != $dataName) {
+                    if (1 != strlen($chaine)) {
                         $chaine .= ',';
                     }
                     $chaine .= '"' . $dataName . '":' . json_encode($parameterArray);
                     $dataName = '';
                 }
-                if (strlen($chaine) != 1) {
+                if (1 != strlen($chaine)) {
                     $chaine .= ',';
                 }
                 $chaine .= '"' . $key . '":"' . $val . '"';
             }
         }
-        if ($dataName != '') {
-            if (strlen($chaine) != 1) {
+        if ('' != $dataName) {
+            if (1 != strlen($chaine)) {
                 $chaine .= ',';
             }
             $chaine .= '"' . $dataName . '":' . json_encode($parameterArray);
@@ -555,7 +562,7 @@ class Mercanet
         if (!filter_var($uri, \FILTER_VALIDATE_URL)) {
             throw new \InvalidArgumentException('Uri is not valid');
         }
-        if (strlen($uri) > 200) {
+        if (200 < strlen($uri)) {
             throw new \InvalidArgumentException('Uri is too long');
         }
     }
@@ -584,7 +591,7 @@ class Mercanet
 
     private function filterRequestParameters(array $httpRequest): array
     {
-        if (!array_key_exists(self::DATA_FIELD, $httpRequest) || $httpRequest[self::DATA_FIELD] == '') {
+        if (!array_key_exists(self::DATA_FIELD, $httpRequest) || '' == $httpRequest[self::DATA_FIELD]) {
             throw new \InvalidArgumentException('Data parameter not present in parameters.');
         }
         $parameters = [];
@@ -607,7 +614,7 @@ class Mercanet
 
     private function extractShaSign(array $parameters): string
     {
-        if (!array_key_exists(self::SHASIGN_FIELD, $parameters) || $parameters[self::SHASIGN_FIELD] == '') {
+        if (!array_key_exists(self::SHASIGN_FIELD, $parameters) || '' == $parameters[self::SHASIGN_FIELD]) {
             throw new \InvalidArgumentException('SHASIGN parameter not present in parameters.');
         }
 
@@ -620,8 +627,8 @@ class Mercanet
 
         $signature = $this->responseData;
         $compute = hash('sha256', utf8_encode($signature . $this->secretKey));
-        if (strcmp($this->shaSign, $compute) == 0) {
-            if ((strcmp($this->parameters['responseCode'], '00') == 0) || (strcmp($this->parameters['responseCode'], '60') == 0)) {
+        if (0 == strcmp($this->shaSign, $compute)) {
+            if ((0 == strcmp($this->parameters['responseCode'], '00')) || (0 == strcmp($this->parameters['responseCode'], '60'))) {
                 $resultat = true;
             }
         }
@@ -674,7 +681,7 @@ class Mercanet
             die();
         }
 
-        if ($info['http_code'] != 200) {
+        if (200 != $info['http_code']) {
             echo 'service error: ' . $info['http_code'] . "\n";
             echo 'return: ' . $result . "\n";
             curl_close($ch);
@@ -682,13 +689,13 @@ class Mercanet
         }
         curl_close($ch);
 
-        if (strlen($result) == 0) {
+        if (0 == strlen($result)) {
             echo "service did not sent back data\n";
             die();
         }
         $result_array = json_decode($result);
 
-        if ($result_array->redirectionStatusCode == '00') {
+        if ('00' == $result_array->redirectionStatusCode) {
             return '<html><body><form name="redirectForm" method="POST" action="' . $result_array->redirectionUrl . '">' .
                 '<input type="hidden" name="redirectionVersion" value="' . $result_array->redirectionVersion . '">' .
                 '<input type="hidden" name="redirectionData" value="' . $result_array->redirectionData . '">' .

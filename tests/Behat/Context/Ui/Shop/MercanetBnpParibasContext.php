@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
 declare(strict_types=1);
 
 /**
@@ -45,8 +52,8 @@ final class MercanetBnpParibasContext implements Context
     }
 
     /**
-     * @When I confirm my order with Mercanet Bnp Paribas payment
      * @Given I have confirmed my order with Mercanet Bnp Paribas payment
+     * @When I confirm my order with Mercanet Bnp Paribas payment
      */
     public function iConfirmMyOrderWithMercanetBnpParibasPayment()
     {
@@ -64,8 +71,8 @@ final class MercanetBnpParibasContext implements Context
     }
 
     /**
-     * @When I cancel my Mercanet Bnp Paribas payment
      * @Given I have cancelled Mercanet Bnp Paribas payment
+     * @When I cancel my Mercanet Bnp Paribas payment
      */
     public function iCancelMyMercanetBnpParibasPayment()
     {

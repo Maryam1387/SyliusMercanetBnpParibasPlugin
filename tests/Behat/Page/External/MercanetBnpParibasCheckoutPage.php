@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
 declare(strict_types=1);
 
 /**
@@ -13,9 +20,9 @@ declare(strict_types=1);
 namespace Tests\BitBag\MercanetBnpParibasPlugin\Behat\Page\External;
 
 use Behat\Mink\Session;
+use FriendsOfBehat\PageObjectExtension\Page\Page;
 use FriendsOfBehat\SymfonyExtension\Mink\MinkParameters;
 use Payum\Core\Security\TokenInterface;
-use FriendsOfBehat\PageObjectExtension\Page\Page;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 final class MercanetBnpParibasCheckoutPage extends Page implements MercanetBnpParibasCheckoutPageInterface

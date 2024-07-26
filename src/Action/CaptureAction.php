@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
 declare(strict_types=1);
 
 /**
@@ -71,7 +78,7 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface
 
         $transactionReference = $model['transactionReference'] ?? null;
 
-        if ($transactionReference !== null) {
+        if (null !== $transactionReference) {
             if ($this->mercanetBnpParibasBridge->isPostMethod()) {
                 $model['status'] = $this->mercanetBnpParibasBridge->paymentVerification() ?
                     PaymentInterface::STATE_COMPLETED : PaymentInterface::STATE_CANCELLED
@@ -84,7 +91,7 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface
                 return;
             }
 
-            if ($model['status'] === PaymentInterface::STATE_COMPLETED) {
+            if (PaymentInterface::STATE_COMPLETED === $model['status']) {
                 return;
             }
         }
