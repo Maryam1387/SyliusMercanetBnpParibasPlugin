@@ -10,7 +10,7 @@ declare(strict_types=1);
  * an email on kontakt@bitbag.pl.
  */
 
-namespace Tests\BitBag\MercanetBnpParibasPlugin\Behat\Mocker;
+namespace Tests\BitBag\MercanetBnpParibasPlugin\Behat\Service\Mocker;
 
 use BitBag\MercanetBnpParibasPlugin\Bridge\MercanetBnpParibasBridgeInterface;
 use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
@@ -67,6 +67,8 @@ final class MercanetBnpParibasMocker
             ->andReturn(Mercanet::TEST)
         ;
 
+        $openMercanetBnpParibasWrapper->shouldReceive('getAuthorisationId')->andReturn('12345');
+
         $action();
 
         $this->mocker->unmockAll();
@@ -112,6 +114,8 @@ final class MercanetBnpParibasMocker
             ->shouldReceive('getEnvironment')
             ->andReturn(Mercanet::TEST)
         ;
+
+        $openMercanetBnpParibasWrapper->shouldReceive('getAuthorisationId')->andReturn('12345');
 
         $action();
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag.mercanet_bnp_paribas_plugin.context.ui.shop.mercanet_bnp_paribas" class="Tests\BitBag\MercanetBnpParibasPlugin\Behat\Context\Ui\Shop\MercanetBnpParibasContext">
+            <argument type="service" id="bitbag.mercanet_bnp_paribas_plugin.mocker.mercanet_bnp_paribas" />
+            <argument type="service" id="sylius.behat.page.shop.checkout.complete" />
+            <argument type="service" id="bitbag.mercanet_bnp_paribas_plugin.page.external" />
+            <argument type="service" id="sylius.behat.page.shop.order.show" />
+            <tag name="fob.context_service" />
+        </service>
+        <service id="bitbag.mercanet_bnp_paribas_plugin.context.ui.admin.managing_payment_methods" class="Tests\BitBag\MercanetBnpParibasPlugin\Behat\Context\Ui\Admin\ManagingPaymentMethodsContext">
+            <argument type="service" id="bitbag.mercanet_bnp_paribas_plugin.page.admin.payment_method.create" />
+            <tag name="fob.context_service" />
+        </service>
+    </services>
+</container>

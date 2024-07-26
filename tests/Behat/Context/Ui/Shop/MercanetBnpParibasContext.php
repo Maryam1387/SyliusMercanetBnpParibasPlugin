@@ -15,8 +15,8 @@ namespace Tests\BitBag\MercanetBnpParibasPlugin\Behat\Context\Ui\Shop;
 use Behat\Behat\Context\Context;
 use Sylius\Behat\Page\Shop\Checkout\CompletePageInterface;
 use Sylius\Behat\Page\Shop\Order\ShowPageInterface;
-use Tests\BitBag\MercanetBnpParibasPlugin\Behat\Mocker\MercanetBnpParibasMocker;
 use Tests\BitBag\MercanetBnpParibasPlugin\Behat\Page\External\MercanetBnpParibasCheckoutPageInterface;
+use Tests\BitBag\MercanetBnpParibasPlugin\Behat\Service\Mocker\MercanetBnpParibasMocker;
 
 final class MercanetBnpParibasContext implements Context
 {

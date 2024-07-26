@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults public="true" />
+
+        <service id="bitbag.mercanet_bnp_paribas_plugin.context.setup.mercanet_bnp_paribas" class="Tests\BitBag\MercanetBnpParibasPlugin\Behat\Context\Setup\MercanetBnpParibasContext">
+            <argument type="service" id="sylius.behat.shared_storage" />
+            <argument type="service" id="sylius.repository.payment_method" />
+            <argument type="service" id="sylius.fixture.example_factory.payment_method" />
+            <argument type="service" id="sylius.factory.payment_method_translation" />
+            <argument type="service" id="sylius.manager.payment_method" />
+            <tag name="fob.context_service" />
+        </service>
+        <service id="bitbag.mercanet_bnp_paribas_plugin.context.setup.channel" class="Tests\BitBag\MercanetBnpParibasPlugin\Behat\Context\Setup\ChannelContext">
+            <argument type="service" id="sylius.behat.factory.default_channel" />
+            <tag name="fob.context_service" />
+        </service>
+    </services>
+</container>

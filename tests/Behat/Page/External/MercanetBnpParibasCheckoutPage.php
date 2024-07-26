@@ -13,8 +13,9 @@ declare(strict_types=1);
 namespace Tests\BitBag\MercanetBnpParibasPlugin\Behat\Page\External;
 
 use Behat\Mink\Session;
+use FriendsOfBehat\SymfonyExtension\Mink\MinkParameters;
 use Payum\Core\Security\TokenInterface;
-use Sylius\Behat\Page\Page;
+use FriendsOfBehat\PageObjectExtension\Page\Page;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 final class MercanetBnpParibasCheckoutPage extends Page implements MercanetBnpParibasCheckoutPageInterface
@@ -22,7 +23,7 @@ final class MercanetBnpParibasCheckoutPage extends Page implements MercanetBnpPa
     /** @var RepositoryInterface */
     private $securityTokenRepository;
 
-    public function __construct(Session $session, array $parameters, RepositoryInterface $securityTokenRepository)
+    public function __construct(Session $session, MinkParameters $parameters, RepositoryInterface $securityTokenRepository)
     {
         parent::__construct($session, $parameters);
 
@@ -45,10 +46,7 @@ final class MercanetBnpParibasCheckoutPage extends Page implements MercanetBnpPa
         $this->getDriver()->visit($this->findCaptureToken()->getTargetUrl());
     }
 
-    /**
-     * @return string
-     */
-    protected function getUrl(array $urlParameters = [])
+    protected function getUrl(array $urlParameters = []): string
     {
         return 'https://payment-webinit-mercanet.test.sips-atos.com/rs-services/v2/paymentInit';
     }
