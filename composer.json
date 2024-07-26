@@ -75,6 +75,12 @@
             "phpstan/extension-installer": false
         }
     },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true,
+            "recipe-install": false
+        }
+    },
     "scripts": {
         "post-install-cmd": [
             "php bin/create_node_symlink.php"
