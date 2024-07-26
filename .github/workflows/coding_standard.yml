@@ -73,7 +73,7 @@ jobs:
         run: vendor/bin/phpstan analyse -c phpstan.neon.dist -l 8 src/
 
       - name: Run ECS
-        run: vendor/bin/ecs
+        run: vendor/bin/ecs check src
 
       - name: Failed build Slack notification
         uses: rtCamp/action-slack-notify@v2
