@@ -2,6 +2,7 @@
 /public/build
 /public/css
 /public/js
+/public/.htaccess
 /public/media/*
 !/public/media/image/
 /public/media/image/*
