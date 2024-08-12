@@ -10,6 +10,7 @@ At BitBag we do believe in open source. However, we are able to do it just becau
 ## Table of Content
 ---
 * [Overwiev](#overwiev)
+* [Functionalities](doc/functionalities.md)
 * [Support](#we-are-here-to-help)
 * [Installation](#installation)
   * [Requirements](#requirements)
