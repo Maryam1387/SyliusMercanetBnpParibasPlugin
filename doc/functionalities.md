@@ -21,7 +21,7 @@ https://documentation.mercanet.bnpparibas.net/en/payment-means-index.html
 ## Usage
 
 ---
-### Adding Payment Gate
+### Adding Payment Gateway
 
 After installation, users can add the payment method
 <div align="center">
