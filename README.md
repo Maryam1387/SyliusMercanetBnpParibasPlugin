@@ -5,39 +5,66 @@
 
 [![](https://img.shields.io/packagist/l/bitbag/mercanet-bnp-paribas-plugin.svg) ](https://packagist.org/packages/bitbag/mercanet-bnp-paribas-plugin "License") [ ![](https://img.shields.io/packagist/v/bitbag/mercanet-bnp-paribas-plugin.svg) ](https://packagist.org/packages/bitbag/mercanet-bnp-paribas-plugin "Version") [ ![](https://img.shields.io/travis/BitBagCommerce/SyliusMercanetBnpParibasPlugin/master.svg) ](http://travis-ci.org/BitBagCommerce/SyliusMercanetBnpParibasPlugin "Build status") [![](https://poser.pugx.org/bitbag/mercanet-bnp-paribas-plugin/downloads)](https://packagist.org/packages/bitbag/mercanet-bnp-paribas-plugin "Total Downloads") [![Slack](https://img.shields.io/badge/community%20chat-slack-FF1493.svg)](http://sylius-devs.slack.com) [![Support](https://img.shields.io/badge/support-contact%20author-blue])](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet)
 
-At BitBag we do believe in open source. However, we are able to do it just because of our awesome clients, who are kind enough to share some parts of our work with the community. Therefore, if you feel like there is a possibility for us working together, feel free to reach us out. You will find out more about our professional services, technologies and contact details at [https://bitbag.io/](https://bitbag.io/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet).
+We want to impact many unique eCommerce projects and build our brand recognition worldwide, so we are heavily involved in creating open-source solutions, especially for Sylius. We have already created **over 35 extensions, which have been downloaded almost 2 million times.**
+
+You can find more information about our eCommerce services and technologies on our website: https://bitbag.io/. We have also created a unique service dedicated to creating plugins: https://bitbag.io/services/sylius-plugin-development. 
+
+Do you like our work? Would you like to join us? Check out the **“Career” tab**: https://bitbag.io/pl/kariera.
+
+# About Us 
+
+BitBag is a software house that implements tailor-made eCommerce platforms with the entire infrastructure—from creating eCommerce platforms to implementing PIM and CMS systems to developing custom eCommerce applications, specialist B2B solutions, and migrations from other platforms.
+
+We actively participate in Sylius's development. We have already completed **over 150 projects**, cooperating with clients from all over the world, including smaller enterprises and large international companies. We have completed projects for such important brands as **Mytheresa, Foodspring, Planeta Huerto (Carrefour Group), Albeco, Mollie, and ArtNight.**
+
+We have a 70-person team of experts: business analysts and eCommerce consultants, developers, project managers, and QA testers.
+
+**Our services:**
+* B2B and B2C eCommerce platform implementations
+* Multi-vendor marketplace platform implementations
+* eCommerce migrations
+* Sylius plugin development
+* Sylius consulting
+* Project maintenance and long-term support
+* PIM and CMS implementations
+
+**Some numbers from BitBag regarding Sylius:**
+* 70 experts on board 
+* +150 projects delivered on top of Sylius
+* 30 countries of BitBag’s customers
+* 7 years in the Sylius ecosystem
+* +35 plugins created for Sylius
+  
+---
+
+   [![](https://bitbag.io/wp-content/uploads/2024/09/badges-sylius.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_adyen)
+
+---
+
+
 
 ## Table of Content
 ---
-* [Overwiev](#overwiev)
-* [Support](#we-are-here-to-help)
+* [Overview](#overview)
 * [Installation](#installation)
   * [Requirements](#requirements)
-  * [Usage](#usage)
   * [Testing](#testing)
-* [About us](#about-us)
-  * [Community](#community)
-* [Demo Sylius shop](#demo-sylius-shop)
-* [Additional Sylius resources for developers](#additional-resources-for-developers)
+  * [Usage](#usage)
+* [Demo](#demo)
+* [Additional resources for developers](#additional-resources-for-developers)
 * [License](#license)
-* [Contact](#contact)
+* [Contact and Support](#contact-and-support)
+* [Community](#community)
 
-# Overwiev
+# Overview
 ---
-This plugin allows you to integrate Mercanet BNP Paribas payment system with Sylius platform app.
+Unlock seamless payment processing with the BNPParibasPayments Plugin for Sylius. This open-source marvel is your key to effortlessly integrating the Mercanet BNP Paribas payment system into your Sylius platform app. We've got your back every step of the way.
 
-## We are here to help
-This **open-source plugin was developed to help the Sylius community** and make Mercanet BNP Paribas payments platform available to any Sylius store. If you have any additional questions, would like help with installing or configuring the plugin or need any assistance with your Sylius project - let us know!
-
-[![](https://bitbag.io/wp-content/uploads/2020/10/button-contact.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet)
-
-## Installation
+# Installation
 ----
-
-
-### Requirements
-
-We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.
+## Requirements
+----
+We work on stable, supported, and up-to-date versions of packages. We recommend you do the same.
 
 | Package | Version |
 | --- | --- |
@@ -45,7 +72,6 @@ We work on stable, supported and up-to-date versions of packages. We recommend y
 | Sylius | 1.0 |
 
 ----
-
 
 ```bash
 $ composer require bitbag/mercanet-bnp-paribas-plugin
@@ -63,11 +89,6 @@ public function registerBundles()
 }
 ```
 
-## Usage
-----
-
-Go to the payment methods in your admin panel. Now you should be able to add new payment method for Mercanet BNP Paribas gateway.
-
 ## Testing
 ----
 
@@ -82,79 +103,45 @@ $ open http://localhost:8000
 $ bin/behat features/*
 $ bin/phpspec run
 ```
+## Usage
+----
 
+Go to the payment methods in your admin panel. Now you should be able to add new payment method for Mercanet BNP Paribas gateway.
 
-# About us
+# Demo
 ---
 
-BitBag is an agency that provides high-quality **eCommerce and Digital Experience software**. Our main area of expertise includes eCommerce consulting and development for B2C, B2B, and Multi-vendor Marketplaces.
-The scope of our services related to Sylius includes:
-- **Consulting** in the field of strategy development
-- Personalized **headless software development**
-- **System maintenance and long-term support**
-- **Outsourcing**
-- **Plugin development**
-- **Data migration**
-
-Some numbers regarding Sylius:
-* **20+ experts** including consultants, UI/UX designers, Sylius trained front-end and back-end developers,
-* **100+ projects** delivered on top of Sylius,
-* Clients from  **20+ countries**
-* **3+ years** in the Sylius ecosystem.
-
----
-
-If you need some help with Sylius development, don't be hesitate to contact us directly. You can fill the form on [this site](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet) or send us an e-mail to hello@bitbag.io!
-
----
-
-[![](https://bitbag.io/wp-content/uploads/2020/10/badges-sylius.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet)
-
-## Community
----
-
-For online communication, we invite you to chat with us & other users on [Sylius Slack](https://sylius-devs.slack.com/).
-
-# Demo Sylius shop
----
-
-We created a demo app with some useful use-cases of plugins!
-Visit b2b.bitbag.shop to take a look at it. The admin can be accessed under https://b2b.bitbag.shop/admin/login link and sylius: sylius credentials.
-Plugins that we have used in the demo:
-| BitBag's Plugin | GitHub | Sylius' Store|
-| ------ | ------ | ------|
-| ACL PLugin | *Private. Available after the purchasing.*| https://plugins.sylius.com/plugin/access-control-layer-plugin/|
-| Braintree Plugin | https://github.com/BitBagCommerce/SyliusBraintreePlugin |https://plugins.sylius.com/plugin/braintree-plugin/|
-| CMS Plugin | https://github.com/BitBagCommerce/SyliusCmsPlugin | https://plugins.sylius.com/plugin/cmsplugin/|
-| Elasticsearch Plugin | https://github.com/BitBagCommerce/SyliusElasticsearchPlugin | https://plugins.sylius.com/plugin/2004/|
-| Mailchimp Plugin | https://github.com/BitBagCommerce/SyliusMailChimpPlugin | https://plugins.sylius.com/plugin/mailchimp/ |
-| Multisafepay Plugin | https://github.com/BitBagCommerce/SyliusMultiSafepayPlugin |
-| Wishlist Plugin | https://github.com/BitBagCommerce/SyliusWishlistPlugin | https://plugins.sylius.com/plugin/wishlist-plugin/|
-| **Sylius' Plugin** | **GitHub** | **Sylius' Store** |
-| Admin Order Creation Plugin | https://github.com/Sylius/AdminOrderCreationPlugin | https://plugins.sylius.com/plugin/admin-order-creation-plugin/ |
-| Invoicing Plugin | https://github.com/Sylius/InvoicingPlugin | https://plugins.sylius.com/plugin/invoicing-plugin/ |
-| Refund Plugin | https://github.com/Sylius/RefundPlugin | https://plugins.sylius.com/plugin/refund-plugin/ |
+We created a demo app with some useful use-cases of plugins! Visit http://demo.sylius.com/ to take a look at it.
 
 **If you need an overview of Sylius' capabilities, schedule a consultation with our expert.**
 
 [![](https://bitbag.io/wp-content/uploads/2020/10/button_free_consulatation-1.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet)
 
-## Additional resources for developers
+# Additional resources for developers
 ---
-To learn more about our contribution workflow and more, we encourage ypu to use the following resources:
+To learn more about our contribution workflow and more, we encourage you to use the following resources:
 * [Sylius Documentation](https://docs.sylius.com/en/latest/)
 * [Sylius Contribution Guide](https://docs.sylius.com/en/latest/contributing/)
 * [Sylius Online Course](https://sylius.com/online-course/)
+* [Sylius Plugins Blogs](https://bitbag.io/blog/category/plugins)
 
-## License
+# License
  ---
 
 This plugin's source code is completely free and released under the terms of the MIT license.
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen.)
 
-## Contact
+# Contact and Support
 ---
-If you want to contact us, the best way is to fill the form on [our website](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet) or send us an e-mail to hello@bitbag.io with your question(s). We guarantee that we answer as soon as we can!
+This open-source plugin was developed to help the Sylius community. If you have any additional questions, would like help with installing or configuring the plugin, or need any assistance with your Sylius project - let us know! **Contact us** or send us an **e-mail to hello@bitbag.io** with your question(s).
 
-[![](https://bitbag.io/wp-content/uploads/2020/10/footer.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet)
+[![](https://bitbag.io/wp-content/uploads/2020/10/button-contact.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet)
+
+
+# Community
+---
+
+For online communication, we invite you to chat with us & other users on [Sylius Slack](https://sylius-devs.slack.com/).
+
+[![](https://bitbag.io/wp-content/uploads/2024/09/badges-partners.png)](https://bitbag.io/contact-us/?utm_source=github&utm_medium=referral&utm_campaign=plugins_mercanet)
