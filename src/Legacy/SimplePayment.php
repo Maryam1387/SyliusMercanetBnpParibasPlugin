@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -12,75 +21,37 @@ namespace BitBag\MercanetBnpParibasPlugin\Legacy;
 
 use Payum\Core\Reply\HttpResponse;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class SimplePayment
 {
-    /**
-     * @var Mercanet|object
-     */
-    private $mercanet;
+    private Mercanet $mercanet;
 
-    /**
-     * @var string
-     */
-    private $environment;
+    private string $environment;
 
-    /**
-     * @var string
-     */
-    private $merchantId;
+    private string $merchantId;
 
-    /**
-     * @var string
-     */
-    private $keyVersion;
+    private string $keyVersion;
 
-    /**
-     * @var string
-     */
-    private $amount;
+    private int $amount;
 
-    /**
-     * @var string
-     */
-    private $currency;
+    private string $currency;
 
-    /**
-     * @var string
-     */
-    private $transactionReference;
+    private string $transactionReference;
 
-    /**
-     * @var string
-     */
-    private $automaticResponseUrl;
+    private string $automaticResponseUrl;
 
-    /**
-     * @param Mercanet $mercanet
-     * @param $merchantId
-     * @param $keyVersion
-     * @param $environment
-     * @param $amount
-     * @param $targetUrl
-     * @param $currency
-     * @param $transactionReference
-     * @param $automaticResponseUrl
-     */
+    private string $targetUrl;
+
     public function __construct(
         Mercanet $mercanet,
-        $merchantId,
-        $keyVersion,
-        $environment,
-        $amount,
-        $targetUrl,
-        $currency,
-        $transactionReference,
-        $automaticResponseUrl
-    )
-    {
+        string $merchantId,
+        string $keyVersion,
+        string $environment,
+        int $amount,
+        string $targetUrl,
+        string $currency,
+        string $transactionReference,
+        string $automaticResponseUrl,
+    ) {
         $this->automaticResponseUrl = $automaticResponseUrl;
         $this->transactionReference = $transactionReference;
         $this->mercanet = $mercanet;
@@ -92,7 +63,7 @@ final class SimplePayment
         $this->targetUrl = $targetUrl;
     }
 
-    public function execute()
+    public function execute(): void
     {
         $this->resolveEnvironment();
 
@@ -101,13 +72,14 @@ final class SimplePayment
         $this->mercanet->setKeyVersion($this->keyVersion);
         $this->mercanet->setAmount($this->amount);
         $this->mercanet->setCurrency($this->currency);
-        $this->mercanet->setOrderChannel("INTERNET");
+        $this->mercanet->setOrderChannel('INTERNET');
         $this->mercanet->setTransactionReference($this->transactionReference);
         $this->mercanet->setNormalReturnUrl($this->targetUrl);
         $this->mercanet->setAutomaticResponseUrl($this->automaticResponseUrl);
 
         $this->mercanet->validate();
 
+        /** @var string $response */
         $response = $this->mercanet->executeRequest();
 
         throw new HttpResponse($response);
@@ -116,7 +88,7 @@ final class SimplePayment
     /**
      * @throws \InvalidArgumentException
      */
-    private function resolveEnvironment()
+    private function resolveEnvironment(): void
     {
         if (Mercanet::TEST === $this->environment) {
             $this->mercanet->setUrl(Mercanet::TEST);
@@ -137,8 +109,12 @@ final class SimplePayment
         }
 
         throw new \InvalidArgumentException(
-            sprintf('The "%s" environment is invalid. Expected %s or %s',
-                $this->environment, Mercanet::PRODUCTION, Mercanet::TEST)
+            sprintf(
+                'The "%s" environment is invalid. Expected %s or %s',
+                $this->environment,
+                Mercanet::PRODUCTION,
+                Mercanet::TEST,
+            ),
         );
     }
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -10,50 +19,37 @@
 
 namespace BitBag\MercanetBnpParibasPlugin\Action;
 
-use BitBag\MercanetBnpParibasPlugin\Legacy\SimplePayment;
 use BitBag\MercanetBnpParibasPlugin\Bridge\MercanetBnpParibasBridgeInterface;
+use BitBag\MercanetBnpParibasPlugin\Legacy\SimplePayment;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\ApiAwareInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Exception\UnsupportedApiException;
 use Payum\Core\GatewayAwareTrait;
+use Payum\Core\Payum;
 use Payum\Core\Request\Capture;
 use Payum\Core\Security\TokenInterface;
 use Sylius\Component\Core\Model\PaymentInterface;
+use Sylius\Component\Order\Model\OrderInterface;
 use Webmozart\Assert\Assert;
-use Payum\Core\Payum;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class CaptureAction implements ActionInterface, ApiAwareInterface
 {
     use GatewayAwareTrait;
 
-    /**
-     * @var Payum
-     */
+    /** @var Payum */
     private $payum;
 
-    /**
-     * @var MercanetBnpParibasBridgeInterface
-     */
+    /** @var MercanetBnpParibasBridgeInterface */
     private $mercanetBnpParibasBridge;
 
-    /**
-     * @param Payum $payum
-     */
     public function __construct(Payum $payum)
     {
         $this->payum = $payum;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function setApi($mercanetBnpParibasBridge)
+    public function setApi($mercanetBnpParibasBridge): void
     {
         if (!$mercanetBnpParibasBridge instanceof MercanetBnpParibasBridgeInterface) {
             throw new UnsupportedApiException('Not supported.');
@@ -63,11 +59,11 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      *
      * @param Capture $request
      */
-    public function execute($request)
+    public function execute($request): void
     {
         RequestNotSupportedException::assertSupports($this, $request);
 
@@ -80,12 +76,10 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface
         /** @var TokenInterface $token */
         $token = $request->getToken();
 
-        $transactionReference = isset($model['transactionReference']) ? $model['transactionReference'] : null;
+        $transactionReference = $model['transactionReference'] ?? null;
 
-        if ($transactionReference !== null) {
-
+        if (null !== $transactionReference) {
             if ($this->mercanetBnpParibasBridge->isPostMethod()) {
-
                 $model['status'] = $this->mercanetBnpParibasBridge->paymentVerification() ?
                     PaymentInterface::STATE_COMPLETED : PaymentInterface::STATE_CANCELLED
                 ;
@@ -97,8 +91,7 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface
                 return;
             }
 
-            if ($model['status'] === PaymentInterface::STATE_COMPLETED) {
-
+            if (PaymentInterface::STATE_COMPLETED === $model['status']) {
                 return;
             }
         }
@@ -114,11 +107,16 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface
         $keyVersion = $this->mercanetBnpParibasBridge->getKeyVersion();
 
         $automaticResponseUrl = $notifyToken->getTargetUrl();
+        /** @var string $currencyCode */
         $currencyCode = $payment->getCurrencyCode();
+        /** @phpstan-ignore-next-line We should not change that now*/
         $targetUrl = $request->getToken()->getTargetUrl();
+        /** @var int $amount */
         $amount = $payment->getAmount();
+        /** @var OrderInterface $order */
+        $order = $payment->getOrder();
 
-        $transactionReference = "MercanetWS" . uniqid() . "OR" . $payment->getOrder()->getNumber();
+        $transactionReference = 'MercanetWS' . uniqid() . 'OR' . $order->getNumber();
 
         $model['transactionReference'] = $transactionReference;
 
@@ -131,7 +129,7 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface
             $targetUrl,
             $currencyCode,
             $transactionReference,
-            $automaticResponseUrl
+            $automaticResponseUrl,
         );
 
         $request->setModel($model);
@@ -148,12 +146,12 @@ final class CaptureAction implements ActionInterface, ApiAwareInterface
     {
         return $this->payum->getTokenFactory()->createNotifyToken(
             $gatewayName,
-            $model
+            $model,
         );
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function supports($request)
     {

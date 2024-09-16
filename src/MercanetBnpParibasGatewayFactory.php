@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -15,15 +24,12 @@ use BitBag\MercanetBnpParibasPlugin\Bridge\MercanetBnpParibasBridgeInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\GatewayFactory;
 
-/**
- * @author Mikołaj Król <mikolaj.krol@bitbag.pl>
- */
 final class MercanetBnpParibasGatewayFactory extends GatewayFactory
 {
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
-    protected function populateConfig(ArrayObject $config)
+    protected function populateConfig(ArrayObject $config): void
     {
         $config->defaults([
             'payum.factory_name' => 'mercanet_bnp_paribas',

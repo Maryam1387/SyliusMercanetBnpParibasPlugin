@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -12,11 +21,8 @@ namespace Tests\BitBag\MercanetBnpParibasPlugin\Behat\Page\External;
 
 use Behat\Mink\Exception\DriverException;
 use Behat\Mink\Exception\UnsupportedDriverActionException;
-use Sylius\Behat\Page\PageInterface;
+use FriendsOfBehat\PageObjectExtension\Page\PageInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 interface MercanetBnpParibasCheckoutPageInterface extends PageInterface
 {
     /**

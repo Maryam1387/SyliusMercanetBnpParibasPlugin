@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="bitbag.mercanet_bnp_paribas.form.type.gateway_configuration"
+                 class="BitBag\MercanetBnpParibasPlugin\Form\Type\MercanetBnpParibasGatewayConfigurationType"
+                 public="true">
+            <tag name="sylius.gateway_configuration_type" type="mercanet_bnp_paribas" label="bitbag.mercanet_bnp_paribas.gateway_label"/>
+            <tag name="form.type"/>
+        </service>
+
+        <service id="bitbag.mercanet_bnp_paribas.gateway_factory"
+                 class="Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder"
+                 public="true">
+            <argument>BitBag\MercanetBnpParibasPlugin\MercanetBnpParibasGatewayFactory</argument>
+            <tag name="payum.gateway_factory_builder" factory="mercanet_bnp_paribas"/>
+        </service>
+
+        <service id="bitbag.mercanet_bnp_paribas.action.capture"
+                 class="BitBag\MercanetBnpParibasPlugin\Action\CaptureAction"
+                 public="true">
+            <argument type="service" id="payum"/>
+            <tag name="payum.action" factory="mercanet_bnp_paribas" alias="payum.action.capture"/>
+        </service>
+
+        <service id="bitbag.mercanet_bnp_paribas.action.notify"
+                 class="BitBag\MercanetBnpParibasPlugin\Action\NotifyAction"
+                 public="true">
+            <argument type="service" id="sm.factory"/>
+            <tag name="payum.action" factory="mercanet_bnp_paribas" alias="payum.action.notify"/>
+        </service>
+
+        <service id="bitbag.mercanet_bnp_paribas.action.status"
+                 class="BitBag\MercanetBnpParibasPlugin\Action\StatusAction"
+                 public="true">
+            <argument type="service" id="request_stack"/>
+            <tag name="payum.action" factory="mercanet_bnp_paribas" alias="payum.action.status"/>
+        </service>
+
+        <service id="bitbag.mercanet_bnp_paribas.bridge.mercanet_bnp_paribas_bridge"
+                 class="BitBag\MercanetBnpParibasPlugin\Bridge\MercanetBnpParibasBridge"
+                 public="true">
+            <argument type="service" id="request_stack"/>
+        </service>
+    </services>
+</container>

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -16,47 +25,33 @@ use Payum\Core\ApiAwareInterface;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Exception\UnsupportedApiException;
 use Payum\Core\GatewayAwareTrait;
-use Sylius\Component\Core\Model\PaymentInterface;
 use Payum\Core\Request\Notify;
+use SM\Factory\FactoryInterface;
+use Sylius\Component\Core\Model\PaymentInterface;
 use Sylius\Component\Payment\PaymentTransitions;
 use Webmozart\Assert\Assert;
-use SM\Factory\FactoryInterface;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 final class NotifyAction implements ActionInterface, ApiAwareInterface
 {
     use GatewayAwareTrait;
 
-    /**
-     * @var MercanetBnpParibasBridgeInterface
-     */
-    private $mercanetBnpParibasBridge;
+    private MercanetBnpParibasBridgeInterface $mercanetBnpParibasBridge;
 
-    /**
-     * @var FactoryInterface
-     */
-    private $stateMachineFactory;
+    private FactoryInterface $stateMachineFactory;
 
-    /**
-     * @param FactoryInterface $stateMachineFactory
-     */
     public function __construct(FactoryInterface $stateMachineFactory)
     {
         $this->stateMachineFactory = $stateMachineFactory;
     }
 
     /**
-     * {@inheritDoc}
+     * @param $request Notify
      */
-    public function execute($request)
+    public function execute($request): void
     {
-        /** @var $request Notify */
         RequestNotSupportedException::assertSupports($this, $request);
 
         if ($this->mercanetBnpParibasBridge->paymentVerification()) {
-
             /** @var PaymentInterface $payment */
             $payment = $request->getFirstModel();
 
@@ -68,10 +63,7 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function setApi($mercanetBnpParibasBridge)
+    public function setApi($mercanetBnpParibasBridge): void
     {
         if (!$mercanetBnpParibasBridge instanceof MercanetBnpParibasBridgeInterface) {
             throw new UnsupportedApiException('Not supported.');
@@ -80,9 +72,6 @@ final class NotifyAction implements ActionInterface, ApiAwareInterface
         $this->mercanetBnpParibasBridge = $mercanetBnpParibasBridge;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function supports($request)
     {
         return

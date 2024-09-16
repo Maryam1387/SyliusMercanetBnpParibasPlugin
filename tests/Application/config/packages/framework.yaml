@@ -1,0 +1,17 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+    form: true
+    csrf_protection: true
+    session:
+        handler_id: ~
+
+    assets:
+        packages:
+            shop:
+                json_manifest_path: '%kernel.project_dir%/public/build/shop/manifest.json'
+            admin:
+                json_manifest_path: '%kernel.project_dir%/public/build/admin/manifest.json'
+            mercanet_bnp_paribas_shop:
+                json_manifest_path: '%kernel.project_dir%/public/build/bitbag/mercanet_bnp_paribas/shop/manifest.json'
+            mercanet_bnp_paribas_admin:
+                json_manifest_path: '%kernel.project_dir%/public/build/bitbag/mercanet_bnp_paribas/admin/manifest.json'

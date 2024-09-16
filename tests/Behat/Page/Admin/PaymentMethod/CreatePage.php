@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -13,13 +22,10 @@ namespace Tests\BitBag\MercanetBnpParibasPlugin\Behat\Page\Admin\PaymentMethod;
 use Behat\Mink\Element\NodeElement;
 use Sylius\Behat\Page\Admin\Crud\CreatePage as BaseCreatePage;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 class CreatePage extends BaseCreatePage implements CreatePageInterface
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function setMercanetBnpParibasPluginGatewaySecretKey($secretKey)
     {
@@ -27,7 +33,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function setMercanetBnpParibasPluginGatewayMerchantId($merchantId)
     {
@@ -35,7 +41,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function setMercanetBnpParibasPluginGatewayKeyVersion($keyVersion)
     {
@@ -43,7 +49,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function setMercanetBnpParibasPluginGatewayEnvironment($environment)
     {
@@ -51,7 +57,7 @@ class CreatePage extends BaseCreatePage implements CreatePageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function findValidationMessage($message)
     {

@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@BitBagMercanetBnpParibasPlugin/Resources/config/services.xml" }

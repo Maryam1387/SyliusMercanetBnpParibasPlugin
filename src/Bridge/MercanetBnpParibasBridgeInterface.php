@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file has been created by developers from BitBag.
+ * Feel free to contact us once you face any issues or want to start
+ * You can find more information about us on https://bitbag.io and write us
+ * an email on hello@bitbag.io.
+ */
+
+declare(strict_types=1);
+
 /**
  * This file was created by the developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
@@ -12,67 +21,30 @@ namespace BitBag\MercanetBnpParibasPlugin\Bridge;
 
 use BitBag\MercanetBnpParibasPlugin\Legacy\Mercanet;
 
-/**
- * @author Patryk Drapik <patryk.drapik@bitbag.pl>
- */
 interface MercanetBnpParibasBridgeInterface
 {
-    /**
-     * @param string $secretKey
-     *
-     * @return Mercanet
-     */
-    public function createMercanet($secretKey);
+    /** @phpstan-ignore-next-line We should not change our business logic now*/
+    public function createMercanet(string $secretKey): Mercanet;
 
-    /**
-     * @return bool
-     */
-    public function paymentVerification();
+    public function paymentVerification(): bool;
 
-    public function getAuthorisationId();
+    public function getAuthorisationId(): string;
 
-    /**
-     * @return bool
-     */
-    public function isPostMethod();
+    public function isPostMethod(): bool;
 
-    /**
-     * @return string
-     */
-    public function getSecretKey();
+    public function getSecretKey(): string;
 
-    /**
-     * @param string $secretKey
-     */
-    public function setSecretKey($secretKey);
+    public function setSecretKey(string $secretKey): void;
 
-    /**
-     * @return string
-     */
-    public function getMerchantId();
+    public function getMerchantId(): string;
 
-    /**
-     * @param string $merchantId
-     */
-    public function setMerchantId($merchantId);
+    public function setMerchantId(string $merchantId): void;
 
-    /**
-     * @return string
-     */
-    public function getKeyVersion();
+    public function getKeyVersion(): string;
 
-    /**
-     * @param string $keyVersion
-     */
-    public function setKeyVersion($keyVersion);
+    public function setKeyVersion(string $keyVersion): void;
 
-    /**
-     * @return string
-     */
-    public function getEnvironment();
+    public function getEnvironment(): string;
 
-    /**
-     * @param string $environment
-     */
-    public function setEnvironment($environment);
+    public function setEnvironment(string $environment): void;
 }

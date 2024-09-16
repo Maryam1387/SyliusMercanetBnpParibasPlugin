@@ -1,0 +1,8 @@
+webpack_encore:
+    output_path: '%kernel.project_dir%/public/build/default'
+    builds:
+        shop: '%kernel.project_dir%/public/build/shop'
+        admin: '%kernel.project_dir%/public/build/admin'
+        mercanet_bnp_paribas_shop: '%kernel.project_dir%/public/build/bitbag/mercanet_bnp_paribas/shop'
+        mercanet_bnp_paribas_admin: '%kernel.project_dir%/public/build/bitbag/mercanet_bnp_paribas/admin'
+

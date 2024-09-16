@@ -45,8 +45,13 @@ final class NotifyActionSpec extends ObjectBehavior
         FactoryInterface $stateMachineFactory,
         StateMachineInterface $stateMachine
     ) {
+        $params = [
+            'authorisationId' => '123'
+        ];
         $request->getModel()->willReturn($arrayObject);
         $request->getFirstModel()->willReturn($payment);
+        $mercanetBnpParibasBridge->getAuthorisationId()->willReturn('123');
+        $payment->getDetails()->willReturn($params);
         $mercanetBnpParibasBridge->isPostMethod()->willReturn(true);
         $mercanetBnpParibasBridge->paymentVerification()->willReturn(true);
         $stateMachineFactory->get($payment, PaymentTransitions::GRAPH)->willReturn($stateMachine);
