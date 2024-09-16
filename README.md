@@ -42,14 +42,14 @@ We have a 70-person team of experts: business analysts and eCommerce consultants
 ---
 
 
-
 ## Table of Content
 ---
 * [Overview](#overview)
+* [Functionalities](doc/functionalities.md)
 * [Installation](#installation)
   * [Requirements](#requirements)
-  * [Testing](#testing)
-  * [Usage](#usage)
+* [Testing](#testing)
+* [Usage](#usage)
 * [Demo](#demo)
 * [Additional resources for developers](#additional-resources-for-developers)
 * [License](#license)
