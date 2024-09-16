@@ -48,7 +48,6 @@ We have a 70-person team of experts: business analysts and eCommerce consultants
 * [Functionalities](doc/functionalities.md)
 * [Installation](#installation)
   * [Requirements](#requirements)
-* [Testing](#testing)
 * [Usage](#usage)
 * [Demo](#demo)
 * [Additional resources for developers](#additional-resources-for-developers)
@@ -61,49 +60,20 @@ We have a 70-person team of experts: business analysts and eCommerce consultants
 Unlock seamless payment processing with the BNPParibasPayments Plugin for Sylius. This open-source marvel is your key to effortlessly integrating the Mercanet BNP Paribas payment system into your Sylius platform app. We've got your back every step of the way.
 
 # Installation
-----
+The installation process for the `SyliusMercanetBnpParibasPlugin` can be found [here](doc/installation.md).
+
+---
 ## Requirements
-----
-We work on stable, supported, and up-to-date versions of packages. We recommend you do the same.
 
-| Package | Version | Version |
-| --- |-------|-------|
-| PHP | ^8.0  | ^8.1  |
-| Sylius | ^1.12 | ^1.13 |
+We work on stable, supported and up-to-date versions of packages. We recommend you to do the same.
 
-----
+| Package       | Version         |
+|---------------|-----------------|
+| PHP           | \>=8.0          |
+| sylius/sylius | 1.12.x - 1.13.x |
+| MySQL         | \>= 5.7         |
 
-```bash
-$ composer require bitbag/mercanet-bnp-paribas-plugin
-```
-    
-Add plugin dependencies to your AppKernel.php file:
-```php
-public function registerBundles()
-{
-    return array_merge(parent::registerBundles(), [
-        ...
-        
-        new \BitBag\MercanetBnpParibasPlugin\BitBagMercanetBnpParibasPlugin(),
-    ]);
-}
-```
-
-## Testing
-----
-
-```bash
-$ wget http://getcomposer.org/composer.phar
-$ php composer.phar install
-$ yarn install
-$ yarn run gulp
-$ php bin/console sylius:install --env test
-$ php bin/console server:start --env test
-$ open http://localhost:8000
-$ bin/behat features/*
-$ bin/phpspec run
-```
-## Usage
+# Usage
 ----
 
 Go to the payment methods in your admin panel. Now you should be able to add new payment method for Mercanet BNP Paribas gateway.
